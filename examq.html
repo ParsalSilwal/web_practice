@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .registration-form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .registration-form h2 {
+            text-align: center;
+        }
+        .registration-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .registration-form input[type="text"], 
+        .registration-form input[type="email"], 
+        .registration-form input[type="tel"], 
+        .registration-form select, 
+        .registration-form textarea {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .registration-form input[type="radio"] {
+            margin-right: 10px;
+        }
+        .registration-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .registration-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-form">
+        <h2>User Registration Form</h2>
+        <form id="registrationForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label>Gender</label>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Female</label>
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="country">Country</label>
+            <select id="country" name="country" required>
+                <option value="">Select</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description"></textarea>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            // Prevent the form from submitting
+            event.preventDefault();
+
+            // Validate the form
+            let isValid = true;
+
+            // Name validation
+            const name = document.getElementById('name').value;
+            if (name === '') {
+                alert('Name is required');
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert('Invalid email format');
+                isValid = false;
+            }
+
+            // Gender validation
+            const genderMale = document.getElementById('male').checked;
+            const genderFemale = document.getElementById('female').checked;
+            if (!genderMale && !genderFemale) {
+                alert('Gender is required');
+                isValid = false;
+            }
+
+            // Phone validation
+            const phone = document.getElementById('phone').value;
+            const phonePattern = /^\d{10}$/; // Assuming a 10-digit phone number
+            if (!phonePattern.test(phone)) {
+                alert('Invalid phone number format');
+                isValid = false;
+            }
+
+            // Country validation
+            const country = document.getElementById('country').value;
+            if (country === '') {
+                alert('Country is required');
+                isValid = false;
+            }
+
+            // If the form is valid, you can submit it to the server here
+            if (isValid) {
+                alert('Form submitted successfully!');
+                // For demonstration, we prevent the form from submitting.
+                // In a real application, you would submit the form here.
+                // this.submit(); // Uncomment to submit the form
+            }
+        });
+    </script>
+</body>
+</html>

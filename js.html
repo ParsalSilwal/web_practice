@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <body onload="alert('hello inline')">
+    <button>click</button>
+    <script>
+        alert('hello internal')
+    </script>
+    <script src="myjs.js"></script>
+</body> -->
+<body id='b' style="background-color:blue">
+    <!-- name: <input type="text" name="name" id="name">
+    <button onclick="myfun()">click</button>
+    <script>
+        function myfun(){
+
+            alert('hi '+document.getElementById('name').value)
+            console.log('hi '+document.getElementById('name').value)
+        }
+    </script> -->
+    <button type="button" onclick="document.getElementById('p').innerHTML=Date()">click to see date</button>
+    <p id="p"></p>
+    <button ondblclick="colorchange()">change color to red</button>
+    <script>
+        function colorchange(){
+            document.getElementById('b').style.backgroundColor="red"
+        }
+    </script>
+    <button onclick="askConfirm()">confirm</button>
+    <button onclick="showPrompt()">Prompt</button>
+    <script>
+    function askConfirm(){
+        var result=confirm('are you sure');
+        // alert(result); true false dinxa 
+        if(result==true){
+            alert('you pressed ok')
+        }
+        else{
+            alert('you pressed cancel')
+        }
+       
+    }
+    function showPrompt(){
+        var result=prompt('what is your name');
+        alert('your name is '+result)
+    }
+    </script>
+</body>
+</html>

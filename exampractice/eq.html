@@ -1,0 +1,87 @@
+<html>
+<head>
+    <style>
+        p {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<form action='success.html' id="myForm" onsubmit="return validate()">
+    Name: <input type="text" id="name" /><br>
+    <p id="nameerr"></p>
+    
+    Email: <input type="text" id="email" /><br>
+    <p id="emailerr"></p>
+    
+    Phone: <input type="text" id="phone" /><br>
+    <p id="numerr"></p>
+    
+    <input type="submit" value="Submit" />
+</form>
+
+<script>
+    // Function to clear error messages when user starts typing
+    document.getElementById('name').addEventListener('input', function() {
+        document.getElementById('nameerr').innerHTML = '';
+    });
+
+    document.getElementById('email').addEventListener('input', function() {
+        document.getElementById('emailerr').innerHTML = '';
+    });
+
+    document.getElementById('phone').addEventListener('input', function() {
+        document.getElementById('numerr').innerHTML = '';
+    });
+
+    // Validation function
+    function validate() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+        var flag=true;
+       
+
+        // Validate name
+        if (name === '') {
+            document.getElementById('nameerr').innerHTML = 'Please enter your name';
+            // document.getElementById('name').focus();
+            flag=false;
+        }
+
+        // Validate email
+        if (email === '') {
+            document.getElementById('emailerr').innerHTML = 'Please enter your email';
+            // document.getElementById('email').focus();
+            flag=false;
+        } else {
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById('emailerr').innerHTML = 'Please enter a valid email address';
+                // document.getElementById('email').focus();
+                flag=false;
+            }
+        }
+
+        // Validate phone number
+        if (phone === '') {
+            document.getElementById('numerr').innerHTML = 'Please enter your phone number';
+            // document.getElementById('phone').focus();
+            flag=false;
+        } else {
+            var phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                document.getElementById('numerr').innerHTML = 'Please enter a valid 10-digit phone number';
+                // document.getElementById('phone').focus();
+                flag=false;
+            }
+        }
+        
+        return flag;
+
+    }
+</script>
+
+</body>
+</html>

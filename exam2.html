@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+</head>
+
+<body>
+    <!-- HTML Button -->
+    <!-- <button id="randomButton" onclick="generateRandomNumber()">Generate Random Number</button> -->
+    <button id="randomButton">Generate Random Number</button>
+
+    <script type="text/javascript">
+        // Function to generate a random number between 1 and 10
+        function generateRandomNumber() {
+            var randomNum = Math.floor(Math.random() * 10) + 1;  // Generate random number between 1 and 10
+            // alert("Random Number: " + randomNum);  // Display alert box with the random number
+            // alert(`Random Number: ${randomNum}`);  // Display alert box with the random number using template literals
+            alert(randomNum);  // Display alert box with the random number
+        }
+
+        // Add event listener to the button to listen for clicks
+        document.getElementById("randomButton").addEventListener("click", generateRandomNumber);
+    </script>
+</body>
+
+</html>

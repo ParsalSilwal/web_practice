@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action=""  name="myform" onsubmit="return validate()">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+        <br>
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age">
+        <br>
+        Address:<input type="text" name="address"><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+        <br>
+        <label for="country">Country</label>
+        <select id="country" name="country" required>
+            <option value="">Select</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="U">UK</option>
+            <!-- Add more options as needed -->
+        </select>
+        <br>
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+        <br>
+        explain: <textarea name="" id=""></textarea>
+        <br>
+        <button>hi</button>
+    
+        <input type="submit">
+    </form>
+    <script>
+        function validate(){
+            var name=document.myform.name.value;
+            var age=document.myform.age.value;
+            var email=document.myform.email.value;
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if(name==""){
+                alert('name is required');
+                return false;
+            }
+            if(age==""){
+                alert('age is required');
+                return false;
+            }
+            if(email==""){
+                alert('email is required');
+                return false;
+            }
+            if (!emailPattern.test(email)) {
+                alert('Invalid email format');
+                return false;
+            }
+            
+            return true;
+        }
+      </script>
+</body>
+</html>
